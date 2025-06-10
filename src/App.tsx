@@ -1,56 +1,130 @@
-import { BrowserRouter, NavLink, Route, Routes } from "react-router";
-import { NavBar } from "./components/NavBar/NavBar";
-import { HomePage } from "./pages/Home/HomePage";
-import { PostsPage } from "./pages/Posts/PostsPage";
-import { CounterPage } from "./pages/Counter/CounterPage";
-import { TodoPage } from "./pages/Todo/TodoPage";
+// AppRouter.tsx or App.tsx
+
+import React, { Suspense } from "react";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router";
+
+// Lazy-loaded pages
+const HomePage = React.lazy(() =>
+  import("./pages/Home/HomePage").then((x) => ({ default: x.HomePage }))
+);
+const PostsPage = React.lazy(() =>
+  import("./pages/Posts/PostsPage").then((x) => ({ default: x.PostsPage }))
+);
+const CounterPage = React.lazy(() =>
+  import("./pages/Counter/CounterPage").then((x) => ({
+    default: x.CounterPage,
+  }))
+);
+const TodoPage = React.lazy(() =>
+  import("./pages/Todo/TodoPage").then((x) => ({ default: x.TodoPage }))
+);
+const TimerPage = React.lazy(() =>
+  import("./pages/Timer/TimerPage").then((x) => ({ default: x.TimerPage }))
+);
+const TimerCounterPage = React.lazy(() =>
+  import("./pages/TimeCounter/TimeCounterPage").then((x) => ({
+    default: x.TimerCounterPage,
+  }))
+);
+
+// Context
 import { TodosKeyContext } from "./pages/Todo/TodosKeyContext";
+
+// Layout/UI
+import { NavBar } from "./components/Navigation/NavBar";
+import { NavList } from "./components/Navigation/NavList";
+import styles from "./components/Navigation/Navigation.module.scss";
+
+const routesConfig = [
+  {
+    path: "/",
+    title: "Home",
+    element: (
+      <Suspense fallback="Loading Home Page...">
+        <HomePage />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/posts",
+    title: "Posts",
+    element: (
+      <Suspense fallback="Loading Posts Page...">
+        <PostsPage />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/counter",
+    title: "Counter",
+    element: (
+      <Suspense fallback="Loading Counter Page...">
+        <CounterPage />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/todo",
+    title: "Todo",
+    element: (
+      <Suspense fallback="Loading Todo Page...">
+        <TodosKeyContext.Provider value="todos-key">
+          <TodoPage />
+        </TodosKeyContext.Provider>
+      </Suspense>
+    ),
+  },
+  {
+    path: "/timer",
+    title: "Timer",
+    element: (
+      <Suspense fallback="Loading Timer Page...">
+        <TimerPage />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/timeCounter",
+    title: "Time Counter",
+    element: (
+      <Suspense fallback="Loading Time Counter Page...">
+        <TimerCounterPage />
+      </Suspense>
+    ),
+  },
+];
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <NavBar>
-          <NavLink
-            to="/"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/posts"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            Posts
-          </NavLink>
-          <NavLink
-            to="/counter"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            Counter
-          </NavLink>
-          <NavLink
-            to="/todo"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            Todo
-          </NavLink>
+          <NavList>
+            {routesConfig.map((route) => (
+              <li key={route.path}>
+                <NavLink
+                  to={route.path}
+                  className={({ isActive }) =>
+                    isActive ? styles["active-link"] : ""
+                  }
+                >
+                  {route.title}
+                </NavLink>
+              </li>
+            ))}
+          </NavList>
         </NavBar>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/posts" element={<PostsPage />} />
-          <Route path="/counter" element={<CounterPage />} />
-          <Route
-            path="/todo"
-            element={
-              <>
-                <TodosKeyContext.Provider value="todos-key">
-                  <TodoPage />
-                </TodosKeyContext.Provider>
-              </>
-            }
-          />
-        </Routes>
+        <section className="main-section">
+          <Routes>
+            {routesConfig.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={route.element}
+              />
+            ))}
+          </Routes>
+        </section>
       </BrowserRouter>
     </>
   );

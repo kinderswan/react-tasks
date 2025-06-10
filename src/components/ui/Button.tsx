@@ -1,16 +1,8 @@
-import { memo, PropsWithChildren } from "react";
+import { ButtonHTMLAttributes, memo, PropsWithChildren } from "react";
 
 export const Button = memo(function Button({
   children,
-  onClick,
-  type,
-}: PropsWithChildren<{
-  onClick?: () => void;
-  type?: HTMLButtonElement["type"];
-}>) {
-  return (
-    <button onClick={onClick} type={type}>
-      {children}
-    </button>
-  );
+  ...props
+}: PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>>) {
+  return <button {...props}>{children}</button>;
 });

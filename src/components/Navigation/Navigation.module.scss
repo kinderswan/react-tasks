@@ -1,0 +1,28 @@
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+}
+
+.nav-list {
+  list-style: none; /* Removes bullets */
+  padding: 0;
+  margin: 0;
+  display: flex; /* Makes list items horizontal */
+  gap: 1rem; /* Adds space between items */
+  li {
+    a {
+      text-decoration: none;
+      color: inherit; /* Inherits text color from parent */
+      padding: 0.5rem 0;
+      transition: color 0.3s;
+    }
+  }
+}
+
+.active-link {
+  color: blue !important; /* Highlight active link */
+  font-weight: bold;
+}

@@ -9,12 +9,11 @@ import {
 } from "react";
 import { TodosKeyContext } from "../TodosKeyContext";
 import { Todo } from "./Todo";
+import { Button } from "../../../components/ui/Button";
 
 export const TodoForm = function TodoForm({
-  todos,
   setTodos,
 }: {
-  todos: Todo[];
   setTodos: Dispatch<SetStateAction<Todo[]>>;
 }) {
   const [formData, setFormData] = useState({
@@ -74,7 +73,7 @@ export const TodoForm = function TodoForm({
         />
       </label>
 
-      <button type="submit">Submit</button>
+      <Button type="submit">Submit</Button>
     </form>
   );
 };
