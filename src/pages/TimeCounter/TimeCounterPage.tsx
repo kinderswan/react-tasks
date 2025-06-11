@@ -16,7 +16,7 @@ export function TimerCounterPage() {
           setTimeLeft(0);
         }
       }
-    }, 0);
+    }, 1); // lol, setTimeout 0 doesn't work
     return () => clearTimeout(id);
   }, [time, timeLeft]);
 

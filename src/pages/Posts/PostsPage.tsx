@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { ChangeEvent, useCallback, useRef, useState } from "react";
 import { PostCard } from "./components/Post";
 import { usePosts } from "./usePosts";
 import { Button } from "../../components/ui/Button";
@@ -20,7 +20,11 @@ export function PostsPage() {
     setAmount(inputValue);
   }, [inputValue]);
 
-  const onChange = useCallback((val: string) => setInputValue(+val || 0), []);
+  const onChange = useCallback(
+    (val: ChangeEvent<HTMLInputElement>) =>
+      setInputValue(+val.target.value || 0),
+    []
+  );
 
   console.log(postsByAmount);
 
