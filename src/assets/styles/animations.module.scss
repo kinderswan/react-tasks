@@ -1,0 +1,40 @@
+.big-on-hover {
+  &:hover {
+    animation: big 15ms ease-out forwards;
+  }
+  @keyframes big {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.glitched-checkmark {
+  transition: transform 0.2s ease;
+
+  &:hover {
+    animation: glitch-jump 0.1s infinite;
+    transform: translate(-2px, -1px) skew(2deg, -2deg);
+  }
+
+  @keyframes glitch-jump {
+    0% {
+      transform: translate(0);
+    }
+    25% {
+      transform: translate(-2px, 2px);
+    }
+    50% {
+      transform: translate(2px, -2px);
+    }
+    75% {
+      transform: translate(-1px, 1px);
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+}

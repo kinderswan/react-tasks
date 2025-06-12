@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Button } from "../../components/ui/Button";
+import { Button } from "../../components/ui/Button/Button";
 
 const timeCreate = (time: number) => `${(time / 60) | 0}:${time % 60}`;
 

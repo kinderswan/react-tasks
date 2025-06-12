@@ -9,7 +9,7 @@ import {
 } from "react";
 import { TodosKeyContext } from "../TodosKeyContext";
 import { Todo } from "./Todo";
-import { Button } from "../../../components/ui/Button";
+import { Button } from "../../../components/ui/Button/Button";
 
 export const TodoForm = function TodoForm({
   setTodos,

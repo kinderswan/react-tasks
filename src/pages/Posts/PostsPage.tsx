@@ -1,8 +1,8 @@
 import { ChangeEvent, useCallback, useRef, useState } from "react";
 import { PostCard } from "./components/Post";
 import { usePosts } from "./usePosts";
-import { Button } from "../../components/ui/Button";
-import { Input } from "../../components/ui/Input";
+import { Button } from "../../components/ui/Button/Button";
+import { Input } from "../../components/ui/Input/Input";
 
 const postsUrl = `https://jsonplaceholder.typicode.com/posts`;
 

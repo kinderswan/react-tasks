@@ -1,0 +1,90 @@
+// _brutal-button.scss
+
+$color-btn-primary: #1a1a1a;
+$color-btn-primary-hover: #333333;
+$color-btn-secondary: #ffffff;
+$color-btn-secondary-border: #1a1a1a;
+$color-warning: #ff9800;
+$color-danger: #d32f2f;
+
+// _brutal-hover.scss
+
+@mixin brutal-button {
+  display: inline-block;
+  padding: 0.75em 2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: all 15ms ease-in-out;
+}
+
+// Primary Brutalist Button
+.btn-primary {
+  @include brutal-button;
+  background-color: $color-btn-primary;
+  color: #fff;
+  border: 4px solid darken($color-btn-primary, 10%);
+
+  box-shadow: 6px 6px 0 0 darken($color-btn-primary, 20%);
+
+  &:hover {
+    background-color: $color-btn-primary-hover;
+    box-shadow: 6px 4px 0 0 darken($color-btn-primary, 20%);
+    transform: translateY(2px);
+  }
+}
+
+// Secondary Brutalist Button (outlined)
+.btn-secondary {
+  @include brutal-button;
+  background-color: $color-btn-secondary;
+  color: $color-btn-secondary-border;
+  border: 4px solid $color-btn-secondary-border;
+
+  border: 4px solid darken($color-btn-secondary-border, 10%);
+
+  box-shadow: 6px 6px 0 0 darken($color-btn-secondary-border, 20%);
+
+  &:hover {
+    background-color: $color-btn-secondary-border;
+    box-shadow: 6px 4px 0 0 darken($color-btn-secondary-border, 20%);
+    color: #fff;
+    transform: translateY(2px);
+  }
+}
+
+// Raw Danger Button (for destructive actions)
+.btn-danger {
+  @include brutal-button;
+  background-color: transparent;
+  color: $color-danger;
+  border: 4px solid darken($color-danger, 10%);
+  box-shadow: 6px 6px 0 0 darken($color-danger, 20%);
+
+  &:hover {
+    background-color: $color-danger;
+    box-shadow: 6px 4px 0 0 darken($color-danger, 20%);
+    color: #fff;
+    transform: translateY(2px);
+  }
+}
+
+.btn-warning {
+  @include brutal-button;
+  background-color: transparent;
+  color: $color-warning;
+
+  border: 4px solid darken($color-warning, 10%);
+
+  box-shadow: 6px 6px 0 0 darken($color-warning, 20%);
+
+  &:hover {
+    background-color: $color-warning;
+    box-shadow: 6px 4px 0 0 darken($color-warning, 20%);
+    color: #fff;
+    transform: translateY(2px);
+  }
+}

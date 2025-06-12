@@ -2,11 +2,15 @@
 
 @import "normalize.css";
 
+* > * {
+  box-sizing: content-box;
+}
+
 // Variables
 $primary-color: #3498db;
 $secondary-color: #2ecc71;
 $font-stack: "Helvetica Neue", Arial, sans-serif;
-$font-size: 21px;
+$font-size: 20px;
 
 // Mixin
 @mixin flex-center {
@@ -29,7 +33,7 @@ body {
   .main-section {
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    padding: 2em;
   }
 }
 

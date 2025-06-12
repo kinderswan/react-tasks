@@ -1,0 +1,43 @@
+$bg-color: #fff;
+$border-color: #000;
+$check-bg: #000;
+$check-color: #fff;
+
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  padding: 0.75em;
+  background: #fff;
+  border: 4px solid $border-color;
+  box-shadow: 6px 6px 0 0 $border-color;
+  &:hover {
+    background-color: #fff;
+    box-shadow: 6px 4px 0 0 darken($border-color, 20%);
+    transform: translateY(2px);
+  }
+}
+
+.checkbox-box {
+  width: 1em;
+  height: 1em;
+  border: 3px solid $border-color;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $check-color;
+  background-color: $bg-color;
+  font-weight: bold;
+
+  &.checked {
+    color: $check-bg;
+  }
+}
+
+.checkbox-label {
+  margin-left: 1em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
