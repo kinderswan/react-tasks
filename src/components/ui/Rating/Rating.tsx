@@ -1,6 +1,6 @@
 import { CSSProperties, memo, useEffect, useState } from "react";
-import StarIcon from "../../assets/icons/star.svg?react";
-import animations from "../../assets/styles/animations.module.scss";
+import StarIcon from "../../../assets/icons/star.svg?react";
+import animations from "../../../assets/styles/animations.module.scss";
 
 const wrapperStyle = {
   display: "flex",
